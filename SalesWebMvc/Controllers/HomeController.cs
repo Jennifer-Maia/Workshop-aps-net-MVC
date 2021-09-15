@@ -19,7 +19,7 @@ namespace SalesWebMvc.Controllers {
             return View();
         }
         public IActionResult About() {
-            ViewData["Messege"] = "APlicativo de vendas com MVC para o curso C#.";
+            ViewData["Messege"] = "Aplicativo de vendas com MVC para o curso C#.";
             ViewData["Aluno"] = "Jennifer Nayara Maia";
 
             return View();
@@ -31,7 +31,7 @@ namespace SalesWebMvc.Controllers {
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error() {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new SalesWebMvc.Models.ViewModels.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
