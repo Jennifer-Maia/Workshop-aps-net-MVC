@@ -5,7 +5,7 @@ using SalesWebMvc.Models.Enums;
 
 namespace SalesWebMvc.Models
 {
-    public class SalesRecord //Lista de Vendas
+    public class SalesRecord
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -15,6 +15,7 @@ namespace SalesWebMvc.Models
         public SalesRecord()
         {
         }
+
         public SalesRecord(int id, DateTime date, double amount, SaleStatus status, Seller seller)
         {
             Id = id;
