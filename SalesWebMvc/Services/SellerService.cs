@@ -23,7 +23,6 @@ namespace SalesWebMvc.Services
         {
             _context.Add(obj);
             _context.SaveChanges();
-            obj.Department = _context.Department.First();
         }
     }
 }
