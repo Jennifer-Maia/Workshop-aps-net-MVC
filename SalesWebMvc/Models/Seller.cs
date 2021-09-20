@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using SalesWebMvc.Models.Enums;
 
@@ -7,8 +8,14 @@ namespace SalesWebMvc.Models {
     public class Seller {
         public int Id { get; set; }
         public string Name { get; set; }
+        [DataType(DataType.EmailAddress)] //Coloca o link no email p/ já abrir meu app de email padrão
         public string Email { get; set; }
+        [Display (Name = "Birth Date")] //Escolho como quero a escrita (antes estava junto agora defini com espaço)
+        [DataType(DataType.Date)] //Coloco somente a data (posso definir outros formatos depois do .), antes estava com data e hr.
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}")]//Altero a forma da data
         public DateTime BirthDate { get; set; }
+        [Display(Name = "Base Salary")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]//Coloca casas decimais no valor
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
