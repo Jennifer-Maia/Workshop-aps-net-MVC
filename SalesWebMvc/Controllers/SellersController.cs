@@ -38,6 +38,12 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken] //Previne de ataques(CSRF)maliciosos usando minha validação.
         public IActionResult Create(Seller seller)//recebe um obj vendedor que veio da requisição (colocando o parâmetro)
         {
+            if (!ModelState.IsValid)//Vejo se o cadastro foi válidado (sem JS)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            } 
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));//Redireciona minha requisição p/ a ação Index. (ou somente RedirectToAction("Index"))
         }
@@ -94,7 +100,14 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit (int id, Seller seller)
         {
-            if(id != seller.Id)
+            if (!ModelState.IsValid)//Vejo se o cadastro foi válidado (sem JS)
+            {
+                var departments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+                return View(viewModel);
+            }
+
+            if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
             }
