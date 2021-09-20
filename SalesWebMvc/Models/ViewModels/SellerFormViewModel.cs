@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SalesWebMvc.Models.ViewModels
 {
-    public class SellerFormViewModel
+    public class SellerFormViewModel //Model composto que posso colocar o que eu quiser
     {
         public Seller Seller { get; set; }
         public ICollection<Department> Departments { get; set; }
